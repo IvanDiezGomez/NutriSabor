@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriSabor - Comida Vegana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./main.js">
+</head>
+<body>
+
+  <header>
+    <h1>NutriSabor</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav id="menu">
+    <a href="#">Inicio</a>
+    <a href="#">Menú</a>
+    <a href="#">Nosotros</a>
+    <a href="#">Contacto</a>
+  </nav>
+
+  <main>
+    <section class="gallery">
+      <div class="card">
+        <img src="https://picsum.photos/400/300?veg1" alt="Ensalada Vegana">
+        <div class="card-content">
+          <div>
+            <h3>Ensalada Orgánica</h3>
+            <p>Mix de hojas verdes frescas, palta, semillas y aderezo natural.</p>
+          </div>
+          <div>
+            <div class="price">$3500</div>
+            <button class="btn" onclick="addToCart('Ensalada Orgánica', 3500)">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://picsum.photos/400/300?veg2" alt="Hamburguesa Vegana">
+        <div class="card-content">
+          <div>
+            <h3>Hamburguesa Vegana</h3>
+            <p>Medallón de lentejas y quinoa con pan integral artesanal.</p>
+          </div>
+          <div>
+            <div class="price">$4200</div>
+            <button class="btn" onclick="addToCart('Hamburguesa Vegana', 4200)">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://picsum.photos/400/300?veg3" alt="Wrap Vegano">
+        <div class="card-content">
+          <div>
+            <h3>Wrap Natural</h3>
+            <p>Tortilla integral rellena de vegetales grillados y hummus.</p>
+          </div>
+          <div>
+            <div class="price">$3100</div>
+            <button class="btn" onclick="addToCart('Wrap Natural', 3100)">Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://picsum.photos/400/300?veg4" alt="Postre Vegano">
+        <div class="card-content">
+          <div>
+            <h3>Tarta Vegana</h3>
+            <p>Base de frutos secos con crema vegetal y frutas de estación.</p>
+          </div>
+          <div>
+            <div class="price">$2800</div>
+            <button class="btn" onclick="addToCart('Tarta Vegana', 2800)">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart">
+    <h4>🛒 Carrito</h4>
+    <ul id="cart-items"></ul>
+    <div class="total">Total: $<span id="total">0</span></div>
+  </div>
+
+  <footer>
+    <h3>Sobre NutriSabor</h3>
+    <p>Empresa dedicada a la venta de comidas veganas saludables, orgánicas y sustentables.</p>
+    <p>Email: contacto@nutrisabor.com | Tel: +54 381 000000</p>
+  </footer>
+
+  
+
+</body>
+</html>
