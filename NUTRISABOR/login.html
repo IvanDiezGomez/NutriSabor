@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login NutriSabor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
+    <h1>NutriSabor</h1>
+  </header>
+
+  <main style="padding: 120px 40px 60px;">
+    <section class="card" style="max-width: 520px; margin: auto;">
+      <div class="card-content">
+        <h2>Login / Registro</h2>
+
+        <div class="form-row">
+          <h3>Iniciar sesión</h3>
+          <input id="page-login-email" type="email" placeholder="Email" />
+          <input id="page-login-password" type="password" placeholder="Contraseña" />
+          <button class="btn" onclick="loginFromPage()">Entrar</button>
+        </div>
+
+        <div class="form-row">
+          <h3>Crear usuario</h3>
+          <input id="new-name" placeholder="Nombre" />
+          <input id="new-email" placeholder="Email" type="email" />
+          <input id="new-password" placeholder="Contraseña" type="password" />
+          <select id="new-role">
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+          </select>
+          <button class="btn" onclick="createUser()">Crear cuenta</button>
+        </div>
+
+        <p>
+          Una vez logueado serás redirigido a <a href="index.html">inicio</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="./main.js"></script>
+</body>
+</html>

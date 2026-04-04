@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./main.js">
+ 
 </head>
 <body>
 
@@ -24,6 +24,36 @@
   </nav>
 
   <main>
+    <section class="card">
+      <div class="card-content">
+        <h2>Bienvenido a NutriSabor</h2>
+        <p>Por favor <a href="login.html">inicia sesión</a> o <a href="login.html">regístrate</a> en la página de login.</p>
+        <p id="current-user">No hay sesión activa</p>
+        <button class="btn" onclick="logout()" id="logout-button" style="display:none;">Salir</button>
+      </div>
+    </section>
+
+    <section id="admin-section" class="card" style="display:none;">
+      <div class="card-content">
+        <h2>Gestión de usuarios (Admin)</h2>
+        <ul id="user-list"></ul>
+      </div>
+    </section>
+
+    <section id="user-orders-section" class="card" style="display:none;">
+      <div class="card-content">
+        <h2>Pedidos del usuario</h2>
+        <ul id="my-orders"></ul>
+      </div>
+    </section>
+
+    <section id="admin-orders-section" class="card" style="display:none;">
+      <div class="card-content">
+        <h2>Control de pedidos (Admin)</h2>
+        <ul id="orders-list"></ul>
+      </div>
+    </section>
+
     <section class="gallery">
       <div class="card">
         <img src="https://picsum.photos/400/300?veg1" alt="Ensalada Vegana">
@@ -83,10 +113,14 @@
     </section>
   </main>
 
+  <script src="./main.js"></script>
+
   <div class="cart">
     <h4>🛒 Carrito</h4>
     <ul id="cart-items"></ul>
     <div class="total">Total: $<span id="total">0</span></div>
+    <button class="btn" onclick="placeOrder()" id="place-order-button">Confirmar pedido</button>
+    <p id="cart-message" style="font-size:14px;margin-top:8px;"></p>
   </div>
 
   <footer>
