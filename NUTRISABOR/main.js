@@ -1,12 +1,35 @@
 function toggleMenu() {
   const menu = document.getElementById('menu');
-  menu.classList.toggle('active');
+  const overlay = document.getElementById('menu-overlay');
+  const isActive = menu.classList.contains('active');
+  
+  if (isActive) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+}
+
+function openMenu() {
+  const menu = document.getElementById('menu');
+  const overlay = document.getElementById('menu-overlay');
+  menu.classList.add('active');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+}
+
+function closeMenu() {
+  const menu = document.getElementById('menu');
+  const overlay = document.getElementById('menu-overlay');
+  menu.classList.remove('active');
+  overlay.classList.remove('active');
+  document.body.style.overflow = ''; // Restore scrolling
 }
 
 // Cerrar menú al hacer click en un link
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', () => {
-    document.getElementById('menu').classList.remove('active');
+    closeMenu();
   });       
 });
 
@@ -14,8 +37,103 @@ document.querySelectorAll('nav a').forEach(link => {
 document.addEventListener('click', (e) => {
   const menu = document.getElementById('menu');
   const toggle = document.querySelector('.menu-toggle');
-  if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-    menu.classList.remove('active');
+  const overlay = document.getElementById('menu-overlay');
+  
+  if (!menu.contains(e.target) && !toggle.contains(e.target) && overlay.contains(e.target)) {
+    closeMenu();
+  }
+});
+
+// Modern Effects: Scroll-triggered animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationDelay = '0s';
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, observerOptions);
+
+// Observe cards for scroll animations
+document.querySelectorAll('.card').forEach((card, index) => {
+  card.style.animationDelay = `${index * 0.1}s`;
+  card.style.animationPlayState = 'paused';
+  observer.observe(card);
+});
+
+// Parallax effect for header
+let lastScrollY = window.scrollY;
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  const scrolled = window.scrollY;
+  const rate = scrolled * -0.5;
+
+  header.style.transform = `translateY(${rate}px)`;
+  lastScrollY = scrolled;
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Add loading animation to buttons
+document.querySelectorAll('.btn').forEach(button => {
+  button.addEventListener('click', function() {
+    this.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      this.style.transform = '';
+    }, 150);
+  });
+});
+
+// Card hover sound effect (visual feedback)
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = 'translateY(-8px) scale(1.02)';
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// Typing effect for welcome message
+function typeWriter(element, text, speed = 50) {
+  let i = 0;
+  element.textContent = '';
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
+
+// Apply typing effect to welcome message
+document.addEventListener('DOMContentLoaded', () => {
+  const welcomeText = document.querySelector('.card-content h2');
+  if (welcomeText) {
+    const originalText = welcomeText.textContent;
+    setTimeout(() => {
+      typeWriter(welcomeText, originalText, 80);
+    }, 500);
   }
 });
 
@@ -363,4 +481,23 @@ function placeOrder() {
 }
 
 initializeData();
+
+// Function for login page tabs
+function switchTab(tabName) {
+  // Remove active class from all tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Hide all form sections
+  document.querySelectorAll('.form-section').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  // Add active class to clicked tab
+  event.target.classList.add('active');
+  
+  // Show corresponding form section
+  document.getElementById(tabName + '-form').classList.add('active');
+}
   
