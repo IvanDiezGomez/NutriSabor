@@ -7,40 +7,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body class="login-page">
   <header>
     <h1>NutriSabor</h1>
   </header>
 
-  <main style="padding: 120px 40px 60px;">
-    <section class="card" style="max-width: 520px; margin: auto;">
-      <div class="card-content">
-        <h2>Login / Registro</h2>
-
-        <div class="form-row">
-          <h3>Iniciar sesión</h3>
-          <input id="page-login-email" type="email" placeholder="Email" />
-          <input id="page-login-password" type="password" placeholder="Contraseña" />
-          <button class="btn" onclick="loginFromPage()">Entrar</button>
+  <main class="login-main">
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <h2>Bienvenido a NutriSabor</h2>
+          <p>Tu comida vegana favorita te espera</p>
         </div>
 
-        <div class="form-row">
-          <h3>Crear usuario</h3>
-          <input id="new-name" placeholder="Nombre" />
-          <input id="new-email" placeholder="Email" type="email" />
-          <input id="new-password" placeholder="Contraseña" type="password" />
-          <select id="new-role">
-            <option value="user">Usuario</option>
-            <option value="admin">Administrador</option>
-          </select>
-          <button class="btn" onclick="createUser()">Crear cuenta</button>
+        <div class="form-tabs">
+          <button class="tab-btn active" onclick="switchTab('login')">Iniciar Sesión</button>
+          <button class="tab-btn" onclick="switchTab('register')">Crear Cuenta</button>
         </div>
 
-        <p>
-          Una vez logueado serás redirigido a <a href="index.html">inicio</a>.
-        </p>
+        <div id="login-form" class="form-section active">
+          <form class="modern-form">
+            <div class="input-group">
+              <input id="page-login-email" type="email" class="modern-input" required />
+              <label class="floating-label">Correo electrónico</label>
+              <div class="input-line"></div>
+            </div>
+
+            <div class="input-group">
+              <input id="page-login-password" type="password" class="modern-input" required />
+              <label class="floating-label">Contraseña</label>
+              <div class="input-line"></div>
+            </div>
+
+            <button class="btn modern-btn" onclick="loginFromPage()" type="button">
+              <span>Iniciar Sesión</span>
+              <div class="btn-shine"></div>
+            </button>
+          </form>
+        </div>
+
+        <div id="register-form" class="form-section">
+          <form class="modern-form">
+            <div class="input-group">
+              <input id="new-name" class="modern-input" required />
+              <label class="floating-label">Nombre completo</label>
+              <div class="input-line"></div>
+            </div>
+
+            <div class="input-group">
+              <input id="new-email" type="email" class="modern-input" required />
+              <label class="floating-label">Correo electrónico</label>
+              <div class="input-line"></div>
+            </div>
+
+            <div class="input-group">
+              <input id="new-password" type="password" class="modern-input" required />
+              <label class="floating-label">Contraseña</label>
+              <div class="input-line"></div>
+            </div>
+
+            <div class="input-group">
+              <select id="new-role" class="modern-select" required>
+                <option value="user">Usuario</option>
+                <option value="admin">Administrador</option>
+              </select>
+              <label class="floating-label select-label">Tipo de cuenta</label>
+              <div class="input-line"></div>
+            </div>
+
+            <button class="btn modern-btn" onclick="createUser()" type="button">
+              <span>Crear Cuenta</span>
+              <div class="btn-shine"></div>
+            </button>
+          </form>
+        </div>
+
+        <div class="form-footer">
+          <p>
+            Al continuar, aceptas nuestros <a href="#" class="link">términos y condiciones</a>
+          </p>
+          <p>
+            <a href="index.html" class="link">← Volver al inicio</a>
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <script src="./main.js"></script>
